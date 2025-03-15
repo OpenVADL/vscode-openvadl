@@ -59,7 +59,7 @@
 			"patterns": [
 				{
 					"name": "keyword.control",
-					"match": "\\b(append|as|else|exists|fold|forall|if|in|let|match|raise|tensor|then|with)\\b"
+					"match": "\\b(append|assert|as|else|exists|fold|forall|if|in|let|match|raise|stop|tensor|then|with)\\b"
 				}
 			]
 		},
@@ -110,7 +110,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.mia",
-					"match": "\\b(executable|firmware|halt|logic|pipeline|process|signal|shutdown|stage|startup|start|stop)\\b" 
+					"match": "\\b(cache|executable|firmware|halt|logic|pipeline|process|signal|shutdown|stage|startup|start|stop)\\b" 
 				}
 			]
 		},
@@ -222,7 +222,6 @@
 			"end": "\\}",
 			"patterns": [
 				{   "include": "#commentsLiterals" }
-				,{  "include": "#operators"        }
 				,{  "include": "#miaKeywords"      }
 				,{  "include": "#isaKeywords"      }
 				,{  "include": "#miaBraces"        }
