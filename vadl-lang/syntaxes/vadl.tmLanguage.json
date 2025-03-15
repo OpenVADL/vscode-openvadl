@@ -21,8 +21,8 @@
 		,{ "include": "#modelDefinition"  }
 		,{ "include": "#modelNames"       }
 		,{ "include": "#commons"          }
-		,{ "include": "#expressions"      }
 		,{ "include": "#toplevel"         }
+		,{ "include": "#expressions"      }
 	],
 	"repository": {
 		"comments": {
@@ -40,8 +40,13 @@
 			]
 		},
 		"toplevel": {
+			"comment": "include toplevel must be placed before include expressions !!",
 			"patterns": [
-				{
+				{   "match": "\\b(import)\\s+[\\w\\d\\:\\.]+\\s(with)\\b",
+					"captures": { "1": { "name": "keyword.other.common" },
+					              "2": { "name": "keyword.other.common" }}
+				}
+				,{
 					"name": "keyword.other.common",
 					"match": "(import|source|with|-<|>-)"
 				}
@@ -135,7 +140,7 @@
 			]
 		},
 		"operators": {
-			"comment": "Do not reorder, longer paaterns must be before the shorter ones !!",
+			"comment": "Do not reorder, longer patterns must be before the shorter ones !!",
 			"patterns": [
 				{   "match": "(\\->|=>)",
 					"name": "keyword.operator" }
