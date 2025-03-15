@@ -42,7 +42,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.common",
-					"match": "(import|source|-<|>-)"
+					"match": "(import|source|with|-<|>-)"
 				}
 			]
 		},
