@@ -1,0 +1,342 @@
+{
+	"SPDX-FileCopyrightText":  " © 2024 TU Wien <vadl@tuwien.ac.at>                                ",
+	"SPDX-License-Identifier": " Apache-2.0                                                        ",
+	"comment-0": "  TextMate json grammar for the processor description language VADL for OpenVADL ",
+	"comment-1": "  When changing the grammar remember the undocumented pitfalls:                  ",
+	"comment-2": "  Matches are in the order of patterns.                                          ",
+	"comment-3": "  A pattern matches only till the end of the line, \\s does not cross the line.  ",
+	"comment-4": "  Multi line matches are only possible with begin / end.                         ",
+	"comment-5": "  Look ahead / behind must be surrounded by parantheses (?=regex) / (?<=regex).  ",
+	"comment-6": "  This grammar works with VS Code and IntelliJ                                   ",
+	"comment-7": "                                                                                 ",
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "VADL",
+	"patterns": [
+		{  "include": "#commentsLiterals" }
+		,{ "include": "#isaDefinition"    }
+		,{ "include": "#abiDefinition"    }
+		,{ "include": "#asmDefinition"    }
+		,{ "include": "#miaDefinition"    }
+		,{ "include": "#procDefinition"   }
+		,{ "include": "#modelDefinition"  }
+		,{ "include": "#modelNames"       }
+		,{ "include": "#commons"          }
+		,{ "include": "#toplevel"         }
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.block",
+					"begin": "(\\/\\*)",
+					"end": "(\\*\\/)"
+				}
+				,{
+					"name": "comment.line.double-slash",
+					"begin": "(\\/\\/)",
+					"end": "(?:\\n|$)"
+				}
+			]
+		},
+		"toplevel": {
+			"patterns": [
+				{
+					"name": "keyword.other.common",
+					"match": "(import|source|-<|>-)"
+				}
+			]
+		},
+		"commons": {
+			"patterns": [
+				{
+					"name": "keyword.other.common",
+					"match": "\\b(constant|enumeration|format|function|match(?=\\s*\\:)|model\\-type|record|using)\\b"
+				}
+			]
+		},
+		"isaKeywords": {
+			"patterns": [
+				{   "include": "#commons" }
+				,{
+					"name": "keyword.other.isa",
+					"match": "\\b(alias|assembly|counter|decimal|encode|exception|encoding|file|group|instruction|memory|mnemonic|none|operation|predicate|process|program|pseudo|register)\\b"
+				}
+				,{
+					"name": "keyword.control",
+					"match": "\\b(append|as|delayed|else|exists|fold|forall|if|in|let|lock|match|raise|tensor|then|with)\\b"
+				}
+			]
+		},
+		"modelNames": {
+			"patterns": [
+				{
+					"name": "entity.name.type",
+					"match": "(\\$[\\w\\d]+)\\b"
+				}
+			]
+		},
+		"sequences": {
+			"patterns": [
+				{
+					"name": "keyword.other.abi",
+					"match": "\\b((address|call|constant|nop|return)\\s+sequence)\\b"
+				}
+			]
+		},
+		"abiKeywords": {
+			"patterns": [
+				{
+					"name": "keyword.other.abi",
+					"match": "\\b(alias\\s+register|(callee|caller)\\s+saved|function\\s+argument)\\b"
+				}
+				,{
+					"name": "keyword.other.abi",
+					"match": "\\b((frame|global|stack)\\s+pointer|return\\s+(address|value))\\b"
+				}
+				,{ "include": "#sequences" }
+			]
+		},
+		"miaKeywords": {
+			"patterns": [
+				{
+					"name": "keyword.other.mia",
+					"match": "\\b(executable|firmware|halt|logic|pipeline|process|signal|shutdown|stage|startup|start|stop)\\b" 
+				}
+			]
+		},
+		"procKeywords": {
+			"patterns": [
+				{
+					"name": "keyword.other.mia",
+					"match": "\\b(firmware|patch|startup|start|stop)\\b" 
+				}
+			]
+		},
+		"asmKeywords": {
+			"patterns": [
+				{
+					"name": "keyword.other.asm",
+					"match": "\\b(constant|directives|enumeration|function|grammar|mnemonic|modifiers)\\b" 
+				}
+				,{
+					"name": "keyword.control",
+					"match": "(@[\\w\\d]+)\\b" 
+				}
+			]
+		},
+		"operators": {
+			"comment": "Do not reorder, longer paaterns must be before the shorter ones !!",
+			"patterns": [
+				{   "match": "(\\->|=>)",
+					"name": "keyword.operator" }
+				,{  "match": "(=|!=|<=|>=|<(?!<)|>(?!>))",
+					"name": "keyword.operator" }
+				,{  "match": "(:=)",
+					"name": "keyword.operator" }
+				,{  "match": "(\\+\\||\\+|\\-\\||\\-|\\*\\#|\\*|/|%)",
+					"name": "keyword.operator" }
+				,{  "match": "(&&|&|\\|\\||\\||!|\\^|<>>|<<>|<<|>>)",
+					"name": "keyword.operator" }
+				,{  "match": "(\\.\\.|::)",
+					"name": "keyword.operator" }
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{   "match": "\\b(?<!\\$)0(?:x|X)[0-9a-fA-F][0-9a-fA-F']*(n)?\\b(?!\\$)",
+					"name": "constant.numeric.integer.hexadecimal" }
+				,{  "match": "\\b(?<!\\$)0(?:b|B)[01][01']*(n)?\\b(?!\\$)",
+					"name": "constant.numeric.integer.binary" }
+				,{  "match": "\\b(?<!\\$)[0-9][0-9']*(n)?\\b(?!\\$)",
+					"name": "constant.numeric.integer.decimal" }
+			]
+		}
+		,
+		"strings": {
+			"patterns": [
+				{
+					"name": "string.quoted.double",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [
+						{
+							"name": "constant.character.escape",
+							"match": "\\\\."
+						}
+					]
+				}
+				,{
+					"name": "string.quoted.single",
+					"begin": "'",
+					"end": "'",
+					"patterns": [
+						{
+							"name": "constant.character.escape",
+							"match": "\\\\."
+						}
+					]
+				}
+			]
+		}
+		,"commentsLiterals": {
+			"patterns": [
+				{   "include": "#comments" }
+				,{  "include": "#numbers"  }
+				,{  "include": "#strings"  }
+			]
+		}
+		,"isaBraces": {
+			"begin": "\\{",
+			"end": "\\}",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "include": "#modelDefinition"  }
+				,{  "include": "#modelNames"       }
+				,{  "include": "#operators"        }
+				,{  "include": "#isaKeywords"      }
+				,{  "include": "#isaBraces"        }
+				,{  "include": "#sequences"        }
+			]
+		}
+		,"abiBraces": {
+			"begin": "\\{",
+			"end": "\\}",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "include": "#abiKeywords"      }
+				,{  "include": "#abiBraces"        }
+			]
+		}
+		,"miaBraces": {
+			"begin": "\\{",
+			"end": "\\}",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "include": "#operators"        }
+				,{  "include": "#miaKeywords"      }
+				,{  "include": "#isaKeywords"      }
+				,{  "include": "#miaBraces"        }
+			]
+		}
+		,"procBraces": {
+			"begin": "\\{",
+			"end": "\\}",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "include": "#operators"        }
+				,{  "include": "#procKeywords"     }
+				,{  "include": "#isaKeywords"      }
+				,{  "include": "#procBraces"       }
+			]
+		}
+		,"asmBraces": {
+			"begin": "\\{",
+			"end": "\\}",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "include": "#asmKeywords"      }
+				,{  "include": "#asmBraces"        }
+			]
+		}
+		,"modelParentheses": {
+			"begin": "\\(",
+			"end":   "\\)",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "match": "\\b([\\w\\d]+)\\s*:",
+					"captures": { "1": { "name": "entity.name.type" } }
+				}
+				,{  "include": "#modelParentheses" }
+			]
+		}
+		,"isaDefinition": {
+			"begin": "\\b(instruction)\\s+(set)\\s+(architecture)\\b",
+			"beginCaptures": {
+				"1": { "name": "keyword.declaration" },
+				"2": { "name": "keyword.declaration" },
+				"3": { "name": "keyword.declaration" }
+			},
+			"end": "(?<=\\})",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "name": "keyword.other.isa",
+					"match": "\\b(extending)\\b" }
+				,{  "include": "#isaBraces" }
+			]
+		}
+		,"modelDefinition": {
+			"begin": "\\b(model)\\s+(\\$?[\\w\\d]+)\\b",
+			"beginCaptures": {
+				"1": { "name": "keyword.declaration" },
+				"2": { "name": "entity.name.type"    }
+			},
+			"end": "(?<=\\})",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "include": "#modelParentheses" }
+				,{  "include": "#isaBraces"        }
+			]
+		}
+		,"abiDefinition": {
+			"begin": "\\b(application)\\s+(binary)\\s+(interface)\\b",
+			"beginCaptures": {
+				"1": { "name": "keyword.declaration" },
+				"2": { "name": "keyword.declaration" },
+				"3": { "name": "keyword.declaration" }
+			},
+			"end": "(?<=\\})",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "name": "keyword.other.abi",
+					"match": "\\b(for)\\b"  }
+				,{  "include": "#abiBraces" }
+			]
+		}
+		,"miaDefinition": {
+			"name": "entity.name.section.mia",
+			"begin": "\\b(micro)\\s+(architecture)\\b",
+			"beginCaptures": {
+				"1": { "name": "keyword.declaration" },
+				"2": { "name": "keyword.declaration" }
+			},
+			"end": "(?<=\\})",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "name": "keyword.other.mia",
+					"match": "\\b(implements)\\b"  }
+				,{  "include": "#miaBraces" }
+			]
+		}
+		,"procDefinition": {
+			"name": "entity.name.section.mia",
+			"begin": "\\b(micro)\\s+(processor)\\b",
+			"beginCaptures": {
+				"1": { "name": "keyword.declaration" },
+				"2": { "name": "keyword.declaration" }
+			},
+			"end": "(?<=\\})",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "name": "keyword.other.mia",
+					"match": "\\b(implements|with)\\b" }
+				,{  "include": "#procBraces" }
+			]
+		}
+		,"asmDefinition": {
+			"name": "entity.name.section.asm",
+			"begin": "\\b(assembly)\\s+(description)\\b",
+			"beginCaptures": {
+				"1": { "name": "keyword.declaration" },
+				"2": { "name": "keyword.declaration" }
+			},
+			"end": "(?<=\\})",
+			"patterns": [
+				{   "include": "#commentsLiterals" }
+				,{  "name": "keyword.other.asm",
+					"match": "\\b(for)\\b"  }
+				,{  "include": "#asmBraces" }
+			]
+		}
+	},
+	"scopeName": "source.vadl"
+}

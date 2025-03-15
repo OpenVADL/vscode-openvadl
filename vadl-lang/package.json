@@ -1,0 +1,37 @@
+{
+	"name": "vadl-lang",
+	"displayName": "VADL Lang",
+	"description": "Syntay highlighting for the VADL language",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.76.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "vadl",
+				"aliases": [
+					"VADL",
+					"vadl"
+				],
+				"extensions": [
+					".vadl"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "vadl",
+				"scopeName": "source.vadl",
+				"path": "./syntaxes/vadl.tmLanguage.json"
+			}
+		]
+	},
+	"__metadata": {
+		"size": 15807
+	}
+}
