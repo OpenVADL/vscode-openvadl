@@ -21,6 +21,7 @@
 		,{ "include": "#modelDefinition"  }
 		,{ "include": "#modelNames"       }
 		,{ "include": "#commons"          }
+		,{ "include": "#expressions"      }
 		,{ "include": "#toplevel"         }
 	],
 	"repository": {
@@ -54,6 +55,14 @@
 				}
 			]
 		},
+		"expressions": {
+			"patterns": [
+				{
+					"name": "keyword.control",
+					"match": "\\b(append|as|else|exists|fold|forall|if|in|let|match|raise|tensor|then|with)\\b"
+				}
+			]
+		},
 		"isaKeywords": {
 			"patterns": [
 				{   "include": "#commons" }
@@ -63,8 +72,9 @@
 				}
 				,{
 					"name": "keyword.control",
-					"match": "\\b(append|as|delayed|else|exists|fold|forall|if|in|let|lock|match|raise|tensor|then|with)\\b"
+					"match": "\\b(delayed|lock)\\b"
 				}
+				,{  "include": "#expressions" }
 			]
 		},
 		"modelNames": {
