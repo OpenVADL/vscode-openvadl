@@ -87,7 +87,7 @@
 				{   "include": "#commons" }
 				,{
 					"name": "keyword.other.isa",
-					"match": "\\b(alias|assembly|counter|decimal|encode|exception|encoding|file|group|instruction|memory|mnemonic|none|operation|predicate|process|program|pseudo|register)\\b"
+					"match": "\\b(alias|assembly|counter|decimal|encode|exception|encoding|file|group|instruction|memory|mnemonic|none|operation|predicate|process|program|pseudo|register|relocation)\\b"
 				}
 				,{
 					"name": "keyword.control",
