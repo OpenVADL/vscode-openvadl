@@ -7,4 +7,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Initial release
+- Initial release with basic syntax highlighting support for ISA, ABI, MIA, ASM and processor sections
