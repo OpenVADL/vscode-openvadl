@@ -1,14 +1,26 @@
 {
-	"name": "vadl-lang",
-	"displayName": "VADL Lang",
-	"description": "Syntay highlighting for the VADL language",
+	"name": "vscode-open-vadl",
+	"displayName": "OpenVADL",
+	"description": "Syntax highlighting for the VADL language",
 	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.76.0"
+	"publisher": "OpenVADL",
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/OpenVADL/vscode-open-vadl"
 	},
+	"homepage": "https://openvadl.org",
 	"categories": [
 		"Programming Languages"
 	],
+	"keywords": [
+		"vadl",
+		"processor"
+	],
+	"preview": true,
+	"engines": {
+		"vscode": "^1.76.0"
+	},
 	"contributes": {
 		"languages": [
 			{
@@ -30,8 +42,5 @@
 				"path": "./syntaxes/vadl.tmLanguage.json"
 			}
 		]
-	},
-	"__metadata": {
-		"size": 15807
 	}
 }
