@@ -1,6 +1,6 @@
-# vscode-open-vadl README
+# OpenVADL Extension for Visual Studio Code
 
-OpenVADL extension for Visual Studio Code. This extension provides IDE support for the processor description language VADL.
+This extension provides IDE support for the processor description language VADL.
 
 ## Features
 
