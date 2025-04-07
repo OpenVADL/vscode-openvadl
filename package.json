@@ -17,6 +17,7 @@
 		"vadl",
 		"processor"
 	],
+	"icon": "openVADL.png",
 	"preview": true,
 	"engines": {
 		"vscode": "^1.76.0"
