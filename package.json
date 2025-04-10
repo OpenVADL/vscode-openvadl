@@ -1,13 +1,13 @@
 {
-	"name": "vscode-open-vadl",
+	"name": "vscode-openvadl",
 	"displayName": "OpenVADL",
 	"description": "Syntax highlighting for the VADL language",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "OpenVADL",
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/OpenVADL/vscode-open-vadl"
+		"url": "https://github.com/OpenVADL/vscode-openvadl"
 	},
 	"homepage": "https://openvadl.org",
 	"categories": [
