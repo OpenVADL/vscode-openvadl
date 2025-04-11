@@ -2,7 +2,7 @@
 	"name": "vscode-openvadl",
 	"displayName": "OpenVADL",
 	"description": "Syntax highlighting for the VADL language",
-	"version": "0.0.4",
+	"version": "1.0.0",
 	"publisher": "OpenVADL",
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"repository": {
@@ -15,10 +15,10 @@
 	],
 	"keywords": [
 		"vadl",
+		"openvadl",
 		"processor"
 	],
 	"icon": "openvadl.png",
-	"preview": true,
 	"engines": {
 		"vscode": "^1.76.0"
 	},
