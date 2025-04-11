@@ -108,7 +108,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.abi",
-					"match": "\\b((address|call|constant|nop|return)\\s+sequence)\\b"
+					"match": "\\b((address|call|constant|nop|register\\s+adjustment|return)\\s+sequence)\\b"
 				}
 			]
 		},
@@ -120,7 +120,7 @@
 				}
 				,{
 					"name": "keyword.other.abi",
-					"match": "\\b((frame|global|stack|thread)\\s+pointer|pseudo\\s+(return|call|local\\s+address\\s+load)\\s+instruction|return\\s+(address|value))\\b"
+					"match": "\\b((frame|global|stack|thread)\\s+pointer|pseudo\\s+(return|call|(local|global|absolute)\\s+address\\s+load)\\s+instruction|return\\s+(address|value))\\b"
 				}
 				,{ "include": "#sequences" }
 			]
@@ -137,7 +137,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.mia",
-					"match": "\\b(firmware|patch|startup|start|stop)\\b" 
+					"match": "\\b(firmware|reset|startup|start|stop)\\b" 
 				}
 			]
 		},
