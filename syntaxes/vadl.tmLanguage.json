@@ -136,8 +136,12 @@
 		"procKeywords": {
 			"patterns": [
 				{
-					"name": "keyword.other.mia",
-					"match": "\\b(firmware|reset|startup|start|stop)\\b" 
+					"name": "keyword.other.proc",
+					"match": "\\b(reset|memory\\s+region|exit\\s+address)\\b" 
+				}, 
+				{
+					"name": "constant.language.vadl",
+					"match": "\\b(RAM|ROM)\\b"
 				}
 			]
 		},
@@ -337,10 +341,9 @@
 		}
 		,"procDefinition": {
 			"name": "entity.name.section.mia",
-			"begin": "\\b(micro)\\s+(processor)\\b",
+			"begin": "\\b(processor)\\b",
 			"beginCaptures": {
-				"1": { "name": "keyword.declaration" },
-				"2": { "name": "keyword.declaration" }
+				"1": { "name": "keyword.declaration" }
 			},
 			"end": "(?<=\\})",
 			"patterns": [
