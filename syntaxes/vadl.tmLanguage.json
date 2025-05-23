@@ -120,7 +120,11 @@
 				}
 				,{
 					"name": "keyword.other.abi",
-					"match": "\\b((frame|global|stack|thread)\\s+pointer|pseudo\\s+(return|call|(local|global|absolute)\\s+address\\s+load)\\s+instruction|return\\s+(address|value))\\b"
+					"match": "\\b((frame|global|stack|thread)\\s+pointer|special\\s+(return|call|(local|global|absolute)\\s+address\\s+load)\\s+instruction|return\\s+(address|value))\\b"
+				}
+				,{
+					"name": "keyword.other.abi",
+					"match": "\\b((size_t|int\\s+max)\\s+type|(long|pointer)\\s+(width|align))\\b"
 				}
 				,{ "include": "#sequences" }
 			]
