@@ -78,7 +78,7 @@
 				}
 				,{
 					"name": "keyword.control",
-					"match": "\\b(append|assert|as|else|exists|fold|forall|if|in|let|match|raise|stop|tensor|then|with)\\b"
+					"match": "\\b(append|assert|as|do|else|exists|fold|forall|if|in|let|match|raise|stop|tensor|then|with)\\b"
 				}
 			]
 		},
