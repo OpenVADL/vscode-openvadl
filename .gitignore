@@ -1,1 +1,4 @@
 *.vsix
+/bin/
+node_modules/
+out/

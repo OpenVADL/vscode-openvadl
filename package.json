@@ -1,47 +1,61 @@
 {
-	"name": "vscode-openvadl",
-	"displayName": "OpenVADL",
-	"description": "Syntax highlighting for the VADL language",
-	"version": "1.0.0",
-	"publisher": "OpenVADL",
-	"license": "SEE LICENSE IN LICENSE.txt",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/OpenVADL/vscode-openvadl"
-	},
-	"homepage": "https://openvadl.org",
-	"categories": [
-		"Programming Languages"
-	],
-	"keywords": [
-		"vadl",
-		"openvadl",
-		"processor"
-	],
-	"icon": "openvadl.png",
-	"engines": {
-		"vscode": "^1.76.0"
-	},
-	"contributes": {
-		"languages": [
-			{
-				"id": "vadl",
-				"aliases": [
-					"VADL",
-					"vadl"
-				],
-				"extensions": [
-					".vadl"
-				],
-				"configuration": "./language-configuration.json"
-			}
-		],
-		"grammars": [
-			{
-				"language": "vadl",
-				"scopeName": "source.vadl",
-				"path": "./syntaxes/vadl.tmLanguage.json"
-			}
-		]
-	}
+    "name": "vscode-openvadl",
+    "displayName": "OpenVADL",
+    "description": "Syntax highlighting for the VADL language",
+    "version": "2.0.0",
+    "publisher": "OpenVADL",
+    "license": "SEE LICENSE IN LICENSE.txt",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/OpenVADL/vscode-openvadl"
+    },
+    "homepage": "https://openvadl.org",
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "vadl",
+        "openvadl",
+        "processor"
+    ],
+    "icon": "openvadl.png",
+    "engines": {
+        "vscode": "^1.76.0"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^9.0.1"
+    },
+    "devDependencies": {
+        "@types/node": "^22",
+        "@types/vscode": "^1.76.0"
+    },
+    "main": "./out/extension",
+    "contributes": {
+        "languages": [
+            {
+                "id": "vadl",
+                "aliases": [
+                    "VADL",
+                    "vadl"
+                ],
+                "extensions": [
+                    ".vadl"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "vadl",
+                "scopeName": "source.vadl",
+                "path": "./syntaxes/vadl.tmLanguage.json"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -b",
+        "watch": "tsc -b -w",
+        "lint": "eslint"
+    }
 }
