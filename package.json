@@ -54,13 +54,6 @@
                 "configuration": "./language-configuration.json"
             }
         ],
-        "grammars": [
-            {
-                "language": "vadl",
-                "scopeName": "source.vadl",
-                "path": "./syntaxes/vadl.tmLanguage.json"
-            }
-        ],
         "configuration": {
             "title": "OpenVADL",
             "properties": {
