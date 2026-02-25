@@ -30,7 +30,17 @@
         "@types/vscode": "^1.76.0"
     },
     "main": "./out/extension",
+    "activationEvents": [
+        "onLanguage:vadl"
+    ],
     "contributes": {
+        "commands": [
+            {
+                "command": "openvadl.selectExecutable",
+                "title": "Select OpenVADL Executable",
+                "category": "OpenVADL"
+            }
+        ],
         "languages": [
             {
                 "id": "vadl",
@@ -50,7 +60,32 @@
                 "scopeName": "source.vadl",
                 "path": "./syntaxes/vadl.tmLanguage.json"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "OpenVADL",
+            "properties": {
+                "openvadl.customPath": {
+                    "type": "string",
+                    "default": "",
+                    "markdownDescription": "Path to the openvadl executable. If left empty, the extension will look for `openvadl` in your system PATH.\n\n[Select executable...](command:openvadl.selectExecutable)\n\nIf you have the openvadl repo locally run `./gradlew jlink` and select `vadl-cli/build/image/bin/openvadl`."
+                },
+                "openvadl.useTcpConnection": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Use TCP connection instead of stdin/stdout (not recommended)."
+                },
+                "openvadl.tcpPort": {
+                    "type": "number",
+                    "default": 10999,
+                    "description": "TCP port for LSP server connection. (Only has an effect if TCP communication is enabled)"
+                },
+                "openvadl.dontStartServer": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Connect to an already running server. If checked, the extension will not start the server and expects it to be already running on the specified port. This is mostly for LSP developers, leave it unchecked if you are unsure. This only works if TCP communication is also enabled."
+                }
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
