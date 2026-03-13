@@ -1,1 +1,7 @@
 .gitignore
+.vscode
+.classpath
+.project
+tsconfig.json
+tsconfig.tsbuildinfo
+src/
