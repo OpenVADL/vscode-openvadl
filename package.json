@@ -67,7 +67,12 @@
                 "openvadl.customPath": {
                     "type": "string",
                     "default": "",
-                    "markdownDescription": "Path to the openvadl executable. If left empty, the extension will look for `openvadl` in your system PATH.\n\n[Select executable...](command:openvadl.selectExecutable)\n\nIf you have the openvadl repo locally run `./gradlew jlink` and select `vadl-cli/build/image/bin/openvadl`."
+                    "markdownDescription": "Path to the openvadl executable. If left empty, the extension will look for `openvadl` in your system PATH.\n\n[Select executable...](command:openvadl.selectExecutable)\n\nNOTE: The GraalVM native build of OpenVADL will not work! Use the jlink build instead.\n\nIf you have the openvadl repo locally run `./gradlew jlink` and select `vadl-cli/build/image/bin/openvadl`."
+                },
+                "openvadl.disableServer": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Do not use the OpenVADL compiler for advanced language features. In this case, only syntax highlighting will be available."
                 },
                 "openvadl.useTcpConnection": {
                     "type": "boolean",

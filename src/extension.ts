@@ -55,12 +55,17 @@ async function stopClient(): Promise<void> {
 
 async function startClient(context: ExtensionContext): Promise<void> {
     const config = workspace.getConfiguration('openvadl');
+    const disableServer = config.get<boolean>('disableServer', false);
     const customPath = config.get<string>('customPath', '');
     const useTcp = config.get<boolean>('useTcpConnection', false);
     const tcpPort = config.get<number>('tcpPort', 10999);
     const dontStartServer = config.get<boolean>('dontStartServer', false);
 
     let serverOptions: ServerOptions;
+
+    if (disableServer) {
+        return;
+    }
 
     if (useTcp && dontStartServer) {
         // TCP mode with external server — just connect, don't spawn anything
@@ -81,7 +86,7 @@ async function startClient(context: ExtensionContext): Promise<void> {
         if (useTcp) {
             // Spawn server in TCP mode, then connect via socket
             serverOptions = () => {
-                const serverProcess = spawn(executablePath, ['lsp', '--port', tcpPort.toString()]);
+                const serverProcess = spawn(executablePath, ['lsp', '--port', tcpPort.toString(), '--no-syntax-highlighting']);
 
                 serverProcess.on('exit', (code: number | null) => {
                     if (code !== null && code !== 0) {
@@ -103,7 +108,7 @@ async function startClient(context: ExtensionContext): Promise<void> {
             // Default: stdio mode
             serverOptions = {
                 command: executablePath,
-                args: ['lsp'],
+                args: ['lsp', '--no-syntax-highlighting'],
             };
         }
     }

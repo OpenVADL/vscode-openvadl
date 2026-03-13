@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Add language server support
+
 ## [1.1.0] - 2025-10-01
 
 - Add further keywords to syntax highlighting: processor, abi, "do", "sdec", "udec"
