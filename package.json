@@ -1,7 +1,7 @@
 {
     "name": "vscode-openvadl",
     "displayName": "OpenVADL",
-    "description": "Syntax highlighting for the VADL language",
+    "description": "Syntax highlighting and other developer support features for the VADL language",
     "version": "1.2.0",
     "publisher": "OpenVADL",
     "license": "SEE LICENSE IN LICENSE.txt",

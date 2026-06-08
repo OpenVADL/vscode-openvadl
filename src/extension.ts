@@ -86,7 +86,7 @@ async function startClient(context: ExtensionContext): Promise<void> {
         if (useTcp) {
             // Spawn server in TCP mode, then connect via socket
             serverOptions = () => {
-                const serverProcess = spawn(executablePath, ['lsp', '--port', tcpPort.toString(), '--no-syntax-highlighting']);
+                const serverProcess = spawn(executablePath, ['lsp', '--port', tcpPort.toString()]);
 
                 serverProcess.on('exit', (code: number | null) => {
                     if (code !== null && code !== 0) {
@@ -108,7 +108,7 @@ async function startClient(context: ExtensionContext): Promise<void> {
             // Default: stdio mode
             serverOptions = {
                 command: executablePath,
-                args: ['lsp', '--no-syntax-highlighting'],
+                args: ['lsp'],
             };
         }
     }
