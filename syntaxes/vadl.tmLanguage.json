@@ -23,6 +23,7 @@
 		,{ "include": "#commons"          }
 		,{ "include": "#toplevel"         }
 		,{ "include": "#expressions"      }
+		,{ "include": "#variableNames"    }
 	],
 	"repository": {
 		"comments": {
@@ -66,7 +67,7 @@
 			"patterns": [
 				{
 					"name": "keyword.other.common",
-					"match": "\\b(constant|enumeration|format|function|match(?=\\s*\\:)|model\\-type|record|using)\\b"
+					"match": "\\b(constant|enumeration|float\\-type|format|function|match(?=\\s*\\:)|model\\-type|record|using)\\b"
 				}
 			]
 		},
@@ -87,7 +88,7 @@
 				{   "include": "#commons" }
 				,{
 					"name": "keyword.other.isa",
-					"match": "\\b(alias|assembly|counter|decimal|encode|exception|encoding|file|group|instruction|memory|mnemonic|none|operation|predicate|process|program|pseudo|register|relocation|sdec|udec)\\b"
+					"match": "\\b(alias|assembly|counter|decimal|encode|exception|encoding|file|group|instruction|memory|mnemonic|newlabel|none|operation|predicate|process|program|pseudo|register|relocation|sdec|udec)\\b"
 				}
 				,{
 					"name": "keyword.control",
@@ -101,6 +102,14 @@
 				{
 					"name": "entity.name.type",
 					"match": "(\\$[\\w\\d]+)\\b"
+				}
+			]
+		},
+		"variableNames": {
+			"patterns": [
+				{
+					"name": "variable.name",
+					"match": "\\b([\\w\\d]+)\\b"
 				}
 			]
 		},
@@ -233,6 +242,7 @@
 				,{  "include": "#isaKeywords"      }
 				,{  "include": "#isaBraces"        }
 				,{  "include": "#sequences"        }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"abiBraces": {
@@ -242,6 +252,7 @@
 				{   "include": "#commentsLiterals" }
 				,{  "include": "#abiKeywords"      }
 				,{  "include": "#abiBraces"        }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"miaBraces": {
@@ -252,6 +263,7 @@
 				,{  "include": "#miaKeywords"      }
 				,{  "include": "#isaKeywords"      }
 				,{  "include": "#miaBraces"        }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"procBraces": {
@@ -263,6 +275,7 @@
 				,{  "include": "#procKeywords"     }
 				,{  "include": "#isaKeywords"      }
 				,{  "include": "#procBraces"       }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"asmBraces": {
@@ -272,6 +285,7 @@
 				{   "include": "#commentsLiterals" }
 				,{  "include": "#asmKeywords"      }
 				,{  "include": "#asmBraces"        }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"modelParentheses": {
@@ -283,6 +297,7 @@
 					"captures": { "1": { "name": "entity.name.type" } }
 				}
 				,{  "include": "#modelParentheses" }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"isaDefinition": {
@@ -298,6 +313,7 @@
 				,{  "name": "keyword.other.isa",
 					"match": "\\b(extending)\\b" }
 				,{  "include": "#isaBraces" }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"modelDefinition": {
@@ -311,6 +327,7 @@
 				{   "include": "#commentsLiterals" }
 				,{  "include": "#modelParentheses" }
 				,{  "include": "#isaBraces"        }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"abiDefinition": {
@@ -326,6 +343,7 @@
 				,{  "name": "keyword.other.abi",
 					"match": "\\b(for)\\b"  }
 				,{  "include": "#abiBraces" }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"miaDefinition": {
@@ -341,6 +359,7 @@
 				,{  "name": "keyword.other.mia",
 					"match": "\\b(implements)\\b"  }
 				,{  "include": "#miaBraces" }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"procDefinition": {
@@ -355,6 +374,7 @@
 				,{  "name": "keyword.other.mia",
 					"match": "\\b(implements|with)\\b" }
 				,{  "include": "#procBraces" }
+				,{  "include": "#variableNames"    }
 			]
 		}
 		,"asmDefinition": {
@@ -370,6 +390,7 @@
 				,{  "name": "keyword.other.asm",
 					"match": "\\b(for)\\b"  }
 				,{  "include": "#asmBraces" }
+				,{  "include": "#variableNames"    }
 			]
 		}
 	},
